@@ -1,0 +1,4 @@
+target :all do
+  use :pdn
+  Lake::PDn::pretty_dn("http://www.mod-buildcraft.com/releases/BuildCraft/7.2.7/buildcraft-7.2.7-dev.jar","bc.jar")
+end

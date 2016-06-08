@@ -1,0 +1,17 @@
+def g_v(path)
+  ver = File.read(path).match(/\.version\s*=\s*['"](?<ver>[\d\.]+)['"]/)[:ver]
+  puts "[INFO] Version is #{ver}"
+  ver
+end
+
+target :all do
+  system "gem build lake-pdn.gemspec"
+end
+
+target :install, :all do
+  system "gem install ./lake-pdn-#{g_v "lake-pdn.gemspec"}.gem"
+end
+
+target :push, :all do
+  system "gem push lake-pdn-#{g_v "lake-pdn.gemspec"}.gem"
+end
